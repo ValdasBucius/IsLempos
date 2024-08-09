@@ -1,0 +1,47 @@
+import React from 'react';
+import image from './../images/logo-white.png';
+import { BsCart } from 'react-icons/bs';
+import { PiHeartStraightBold } from 'react-icons/pi';
+import { CiSearch } from 'react-icons/ci';
+import { VscAccount } from 'react-icons/vsc';
+
+
+
+export default function Header() {
+  return (
+    <header className="flex justify-between bg-zinc-900 p-1 border-b border-black fixed w-full">
+      <div className='flex-1  flex flex-col justify-between'>
+        <div className="flex pl-8 gap-4 font-medium	">
+          <p>+3954456251</p>
+          <p>islempos@info.lt</p>
+        </div>
+        <div className='flex pl-8 gap-24'>
+
+        <p>Namai</p>
+        <p>Apie mus</p>
+        <p>Kontaktai</p>
+        </div>
+      </div>
+
+      <div className="flex-1 justify-center flex">
+        <img src={image} className="w-36" />
+      </div>
+
+      <div className="flex-1 flex flex-col justify-between">
+
+        <div className='flex gap-2 pr-8 justify-end'>
+          <VscAccount size={20} />
+        <BsCart size={20} />
+        <PiHeartStraightBold size={21.5} />
+        <CiSearch size={22} />
+        </div>
+
+        <div className='flex pr-8 justify-end gap-24'>
+          <p>Baldai</p>
+          <p>Furnitūra</p>
+          <p>Kokybė</p>
+        </div>
+      </div>
+    </header>
+  );
+}
