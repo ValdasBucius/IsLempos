@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FaFacebook, FaInstagram, FaPinterest } from 'react-icons/fa'
-import Navigation from '../Layout/Navigation'
+import Navigation from '../navigation/Navigation'
+import InsideOrOutside from '../components/InsideOrOutside'
 const listData = [
     {
       id: 1,
@@ -30,14 +31,15 @@ const listData = [
 
   ]
 export default function Home() {
+
+  const [typeInside, setTypeInside] = useState(false)
+  const [typeOutside, setTypeOutside] = useState(false)
+
   return (
     <>
-    <section className="bg-rose-100/10 border-t border-b border-stone-300">
-        <h1 className="text-center text-4xl pt-16 pb-8 capitalize">
-          Vidaus Šviestuvai
-        </h1>
-        <Navigation />
-      </section>
+
+    {!typeInside && !typeOutside ? <InsideOrOutside onSetTypeInside={setTypeInside} onSetTypeOutside={setTypeOutside}/> : <Navigation />}
+
 
       <section>
       <div className="flex gap-16 p-8">

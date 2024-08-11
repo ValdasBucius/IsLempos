@@ -9,7 +9,7 @@ import { VscAccount } from 'react-icons/vsc';
 
 export default function Header() {
   return (
-    <header className="flex justify-between bg-zinc-900 p-1 border-b border-black fixed w-full">
+    <header className="flex justify-between bg-zinc-900 p-1 fixed w-full">
       <div className='flex-1  flex flex-col justify-between'>
         <div className="flex pl-8 gap-4 font-medium	">
           <p>+3954456251</p>
