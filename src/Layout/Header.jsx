@@ -17,9 +17,9 @@ export default function Header() {
         </div>
         <div className='flex pl-8 gap-24'>
 
-        <p>Namai</p>
-        <p>Apie mus</p>
-        <p>Kontaktai</p>
+        <p>Šviestuvai</p>
+        <p>Akcijos</p>
+        <p>Naujienos</p>
         </div>
       </div>
 
@@ -37,9 +37,9 @@ export default function Header() {
         </div>
 
         <div className='flex pr-8 justify-end gap-24'>
-          <p>Baldai</p>
-          <p>Furnitūra</p>
           <p>Kokybė</p>
+          <p>Apie mus</p>
+          <p>Kontaktai</p>
         </div>
       </div>
     </header>
