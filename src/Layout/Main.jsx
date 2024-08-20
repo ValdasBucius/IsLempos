@@ -1,6 +1,4 @@
-import { Outlet } from "react-router-dom";
-import Home from "../pages/Home";
-import InnerOutside from "../pages/InnerOutside";
+import InnerOutside from "../components/InnerOutside";
 
 export default function Main() {
   return (

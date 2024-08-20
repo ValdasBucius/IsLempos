@@ -1,8 +1,10 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-export default function Outside() {
+export default function Outer() {
   return (
+
+    
     <section className="bg-rose-100/10 border-t border-b border-stone-300">
         <h1 className="text-center text-4xl pt-16 pb-8 capitalize">
           Lauko Šviestuvai

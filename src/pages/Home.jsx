@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
-import LampsList from './LampsList'
+import LampsList from '../components/LampsList'
 
-import { NavLink, Outlet } from 'react-router-dom'
 
 export default function Home() {
 

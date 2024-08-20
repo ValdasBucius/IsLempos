@@ -4,6 +4,7 @@ import { BsCart } from 'react-icons/bs';
 import { PiHeartStraightBold } from 'react-icons/pi';
 import { CiSearch } from 'react-icons/ci';
 import { VscAccount } from 'react-icons/vsc';
+import { NavLink } from 'react-router-dom';
 
 
 
@@ -24,7 +25,8 @@ export default function Header() {
       </div>
 
       <div className="flex-1 justify-center flex">
-        <img src={image} className="w-36" />
+      <NavLink index><img src={image} className="w-36" /></NavLink>
+      
       </div>
 
       <div className="flex-1 flex flex-col justify-between">

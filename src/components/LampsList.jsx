@@ -1,26 +1,33 @@
 import React from 'react'
 import { FaFacebook, FaInstagram, FaPinterest } from 'react-icons/fa'
+import { useLocation } from 'react-router-dom';
+
+
 const listData = [
     {
       id: 1,
+      category: '/vidaus/lubiniai',
       picture: 'https://www.lempa.lt/wp-content/uploads/2022/02/My-project-13-420x479.jpg',
       name: 'Arte Di Murano',
       price: 523,
       description: `Pakabinamas Arte di Murano šviestuvas – 7376. Klasikinis Murano stiklo šviestuvas su 6, 8 arba 12 šviesos šaltinių. Šviestuvo stiklas gali būti pasirenkamas iš kelių variantų: gintaro, raudonos, juodos, baltos, aukso spalvos arba skaidrus.`
     },{
       id: 2,
+      category: '/vidaus/lubiniai',
       picture: 'https://www.lempa.lt/wp-content/uploads/2021/03/My-Post-20-1-420x479.jpg',
       name: 'Chujano piminaci',
       price: 243,
       description: `Pakabinamas Arte di Murano šviestuvas – 7376. Klasikinis Murano stiklo šviestuvas su 6, 8 arba 12 šviesos šaltinių. Šviestuvo stiklas gali būti pasirenkamas iš kelių variantų: gintaro, raudonos, juodos, baltos, aukso spalvos arba skaidrus.`
     },{
       id: 3,
+      category: '/vidaus/pakabinami',
       picture: 'https://www.lempa.lt/wp-content/uploads/2019/06/Estiluz-Poulpe-floor-lamp-1-420x479.jpg',
       name: 'Lamp de la Paparastinio',
       price: 323,
       description: `Pakabinamas Arte di Murano šviestuvas – 7376. Klasikinis Murano stiklo šviestuvas su 6, 8 arba 12 šviesos šaltinių. Šviestuvo stiklas gali būti pasirenkamas iš kelių variantų: gintaro, raudonos, juodos, baltos, aukso spalvos arba skaidrus.`
     },{
       id: 4,
+      category: '/vidaus/pakabinami',
       picture: 'https://www.lempa.lt/wp-content/uploads/2024/05/Untitled-8-1-420x479.jpeg',
       name: 'Ispisdenimo lia grada',
       price: 629,
@@ -28,54 +35,16 @@ const listData = [
     }
 
   ]
+
 export default function LampsList() {
+
+  const location = useLocation()
   return (
     <>
     <section>
-    <div className="flex gap-16 p-8">
-        <div className="flex flex-1 flex-col">
-          <label htmlFor="style">Stilius</label>
-          <select className='text-black' id="style">
-            <option >Visi</option>
-            <option>Klasikiniai</option>
-            <option>Modernūs</option>
-            <option>Antikvariniai</option>
-          </select>
-        </div>
-        <div className="flex flex-1 flex-col">
-          <label htmlFor="style">Gamintojas</label>
-          <select className='text-black' id="style">
-            <option>Maseroli</option>
-            <option>Klasikiniai</option>
-            <option>Modernūs</option>
-            <option>Antikvariniai</option>
-          </select>
-        </div>
-        <div className="flex flex-1 flex-col">
-          <label htmlFor="style">Kaina</label>
-          <select className='text-black' id="style">
-            <option>0 - 100</option>
-            <option>Klasikiniai</option>
-            <option>Modernūs</option>
-            <option>Antikvariniai</option>
-          </select>
-        </div>
-        <div className="flex flex-1 flex-col">
-          <label htmlFor="style">Rikiuoti pagal</label>
-          <select className='text-black' id="style">
-            <option>Kaina (min - max)</option>
-            <option>Klasikiniai</option>
-            <option>Modernūs</option>
-            <option>Antikvariniai</option>
-          </select>
-        </div>
-      </div>
-    </section>
-
-    <section>
       <div className='pb-16'>
         <ul className='flex justify-around flex-wrap'>
-          {listData.map(el => 
+          {listData.filter(el => el.category.includes(`${location.pathname}`)).map(el => 
           <li key={el.id}>
             <p className='text-center upercase text-md'>{el.name}</p>
             <img className='w-72 pt-1' src={el.picture}/>
