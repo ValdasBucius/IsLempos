@@ -5,6 +5,7 @@ import { PiHeartStraightBold } from 'react-icons/pi';
 import { CiSearch } from 'react-icons/ci';
 import { VscAccount } from 'react-icons/vsc';
 import { NavLink } from 'react-router-dom';
+import Cart from '../pages/Cart';
 
 
 
@@ -25,17 +26,19 @@ export default function Header() {
       </div>
 
       <div className="flex-1 justify-center flex">
-      <NavLink index><img src={image} className="w-36" /></NavLink>
-      
+        <NavLink index><img src={image} className="w-36" /></NavLink>
       </div>
 
       <div className="flex-1 flex flex-col justify-between">
 
         <div className='flex gap-2 pr-8 justify-end'>
           <VscAccount size={20} />
-        <BsCart size={20} />
-        <PiHeartStraightBold size={21.5} />
-        <CiSearch size={22} />
+          <NavLink to='krepselis' path={<Cart/>}>
+           <BsCart size={20} />
+          </NavLink>
+
+          <PiHeartStraightBold size={21.5} />
+          <CiSearch size={22} />
         </div>
 
         <div className='flex pr-8 justify-end gap-24'>

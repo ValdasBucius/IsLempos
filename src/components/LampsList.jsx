@@ -1,44 +1,25 @@
-import React from 'react'
+import { useContext } from 'react';
+import { BsCart } from 'react-icons/bs';
 import { FaFacebook, FaInstagram, FaPinterest } from 'react-icons/fa'
 import { useLocation } from 'react-router-dom';
+import { CartContext } from '../App';
+import { listData } from '../assets/ListData';
+import { toast } from 'react-toastify';
 
 
-const listData = [
-    {
-      id: 1,
-      category: '/vidaus/lubiniai',
-      picture: 'https://www.lempa.lt/wp-content/uploads/2022/02/My-project-13-420x479.jpg',
-      name: 'Arte Di Murano',
-      price: 523,
-      description: `Pakabinamas Arte di Murano šviestuvas – 7376. Klasikinis Murano stiklo šviestuvas su 6, 8 arba 12 šviesos šaltinių. Šviestuvo stiklas gali būti pasirenkamas iš kelių variantų: gintaro, raudonos, juodos, baltos, aukso spalvos arba skaidrus.`
-    },{
-      id: 2,
-      category: '/vidaus/lubiniai',
-      picture: 'https://www.lempa.lt/wp-content/uploads/2021/03/My-Post-20-1-420x479.jpg',
-      name: 'Chujano piminaci',
-      price: 243,
-      description: `Pakabinamas Arte di Murano šviestuvas – 7376. Klasikinis Murano stiklo šviestuvas su 6, 8 arba 12 šviesos šaltinių. Šviestuvo stiklas gali būti pasirenkamas iš kelių variantų: gintaro, raudonos, juodos, baltos, aukso spalvos arba skaidrus.`
-    },{
-      id: 3,
-      category: '/vidaus/pakabinami',
-      picture: 'https://www.lempa.lt/wp-content/uploads/2019/06/Estiluz-Poulpe-floor-lamp-1-420x479.jpg',
-      name: 'Lamp de la Paparastinio',
-      price: 323,
-      description: `Pakabinamas Arte di Murano šviestuvas – 7376. Klasikinis Murano stiklo šviestuvas su 6, 8 arba 12 šviesos šaltinių. Šviestuvo stiklas gali būti pasirenkamas iš kelių variantų: gintaro, raudonos, juodos, baltos, aukso spalvos arba skaidrus.`
-    },{
-      id: 4,
-      category: '/vidaus/pakabinami',
-      picture: 'https://www.lempa.lt/wp-content/uploads/2024/05/Untitled-8-1-420x479.jpeg',
-      name: 'Ispisdenimo lia grada',
-      price: 629,
-      description: `Pakabinamas Arte di Murano šviestuvas – 7376. Klasikinis Murano stiklo šviestuvas su 6, 8 arba 12 šviesos šaltinių. Šviestuvo stiklas gali būti pasirenkamas iš kelių variantų: gintaro, raudonos, juodos, baltos, aukso spalvos arba skaidrus.`
-    }
-
-  ]
 
 export default function LampsList() {
 
+  const setCart = useContext(CartContext)
   const location = useLocation()
+
+  const handleAddToCart = (el) => {
+    setCart(el)
+    toast("Pridėta prie krepšelio!");
+
+  }
+
+
   return (
     <>
     <section>
@@ -46,9 +27,20 @@ export default function LampsList() {
         <ul className='flex justify-around flex-wrap'>
           {listData.filter(el => el.category.includes(`${location.pathname}`)).map(el => 
           <li key={el.id}>
-            <p className='text-center upercase text-md'>{el.name}</p>
-            <img className='w-72 pt-1' src={el.picture}/>
-            <p className='text-center text-black bg-white border-b border-t border-black'>Kaina {el.price} €</p>
+
+            <button className='hover:bg-green-200/25 p-2'>
+                <p className='text-center upercase text-md'>{el.name}</p>
+                <div>
+                  <img className='w-72 pt-1' src={el.picture}/>
+                </div>
+            </button>
+            
+              <button onClick={() => handleAddToCart(el)}
+ className='gap-1 flex bg-green-600 border-b-xl w-full justify-center items-start p-2 hover:bg-green-400'>
+                <BsCart size={20} />
+                <p className='uppercase'>Į Krepšelį {el.price} €</p>
+              </button>
+
           </li>)}
         </ul>
       </div>

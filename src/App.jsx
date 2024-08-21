@@ -9,6 +9,12 @@ import WallLamp from './pages/Inner/WallLamp';
 import StandingLamp from './pages/Inner/StandingLamp';
 import TableLamp from './pages/Inner/TableLamp';
 import InstalledLamp from './pages/Inner/InstalledLamp';
+import { useState, createContext } from 'react';
+import Cart from './pages/Cart';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+export const CartContext = createContext()
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -25,13 +31,24 @@ const router = createBrowserRouter(
             </Route>
 
             <Route path="lauko" element={<Outer />}/>
+
+            <Route path="krepselis" element={<Cart />}/>
     </Route>
   )
 )
 
+
 function App() {
+  const [cart, setCart] = useState([])
+  console.log(cart)
   return (
-        <RouterProvider router={router} />
+    <>
+      <CartContext.Provider value={cart, setCart}>
+        <RouterProvider onSetCart={setCart} onCart={cart} router={router} />
+      </CartContext.Provider>
+      <ToastContainer />
+
+    </>
   );
 }
 
